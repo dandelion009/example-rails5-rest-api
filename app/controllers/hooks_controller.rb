@@ -1,4 +1,4 @@
-class HookController < ApplicationController
+class HooksController < ApplicationController
   before_action :authenticate_user
   before_action :set_hook, only: [:show, :update, :destroy]
 
