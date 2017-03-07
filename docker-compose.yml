@@ -1,0 +1,15 @@
+version: "3"
+services:
+  api:
+    build: .
+    command: rails server -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/var/www/rest-api
+    ports:
+      - "80:3000"
+    links:
+      - postgres
+  postgres:
+    image: postgres:9.6.2
+    ports:
+      - "5432"
