@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: hooks
+#
+#  id         :uuid             not null, primary key
+#  threshold  :integer          default("0")
+#  callback   :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Hook < ApplicationRecord
   include Rails.application.routes.url_helpers
 
