@@ -6,33 +6,37 @@ class ConsumersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get consumers_url, as: :json
+    get consumers_url, as: :json, headers: authenticated_header
     assert_response :success
   end
 
   test "should create consumer" do
     assert_difference('Consumer.count') do
-      post consumers_url, params: { consumer: {  } }, as: :json
+      post consumers_url,
+        params: { name: Faker::Name.unique.name },
+        as: :json, headers: authenticated_header
     end
 
-    assert_response 201
+    assert_response :created
   end
 
   test "should show consumer" do
-    get consumer_url(@consumer), as: :json
+    get consumer_url(@consumer), as: :json, headers: authenticated_header
     assert_response :success
   end
 
   test "should update consumer" do
-    patch consumer_url(@consumer), params: { consumer: {  } }, as: :json
-    assert_response 200
+    patch consumer_url(@consumer),
+      params: { consumer: { name: Faker::Name.unique.name } },
+      as: :json, headers: authenticated_header
+    assert_response :ok
   end
 
   test "should destroy consumer" do
     assert_difference('Consumer.count', -1) do
-      delete consumer_url(@consumer), as: :json
+      delete consumer_url(@consumer), as: :json, headers: authenticated_header
     end
 
-    assert_response 204
+    assert_response :no_content
   end
 end

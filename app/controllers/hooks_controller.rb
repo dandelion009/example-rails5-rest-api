@@ -47,6 +47,6 @@ class HooksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def hook_params
-      params.fetch(:hook, {}).require(:threshold, :callback_url)
+      params.require(:hook).permit(:threshold, :callback)
     end
 end

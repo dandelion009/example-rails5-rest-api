@@ -1,7 +1,31 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: <%= Faker::Name.unique.name %>
 
 two:
-  name: MyString
+  name: <%= Faker::Name.unique.name %>
+
+three:
+  name: <%= Faker::Name.unique.name %>
+
+four:
+  name: <%= Faker::Name.unique.name %>
+
+five:
+  name: <%= Faker::Name.unique.name %>
+
+six:
+  name: <%= Faker::Name.unique.name %>
+
+seven:
+  name: <%= Faker::Name.unique.name %>
+
+eight:
+  name: <%= Faker::Name.unique.name %>
+
+nine:
+  name: <%= Faker::Name.unique.name %>
+
+ten:
+  name: <%= Faker::Name.unique.name %>
