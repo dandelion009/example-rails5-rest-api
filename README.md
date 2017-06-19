@@ -19,7 +19,7 @@ These instructions are for MacOS.
 
 ### Building and running the application in the background
 
-1. `docker-compose build && docker-compose up -d`
+1. `docker-compose up -d`
 2. `docker-compose run api rails db:setup db:migrate`
 
 ### Tailing the logs
@@ -44,7 +44,7 @@ The API will be listening on port 80 inside the Docker container.
 
 1. `brew install rbenv rbenv-binstubs ruby-build postgresql`
 2. Initialize postgres per instructions.
-3. `eval "$(rbenv init -)" && rbenv install 2.4.0 && rbenv local 2.4.0`
+3. `eval "$(rbenv init -)" && rbenv install 2.4.1 && rbenv local 2.4.1`
 4. `gem install rails bundler`
 5. `rails db:setup db:migrate`
 6. `rails s -d`
@@ -55,14 +55,20 @@ The API will be listening on port 80 inside the Docker container.
 
 ## Curl command examples
 
-*NOTE:* Replace `localhost:3000` in the examples below with the correct IP address
-if you are running the API in a Docker container.
+*NOTE:* Replace `localhost:3000` in the examples below with `localhost`
+if you are running the API in the Docker container.
+
+For prettier (i.e., readable) output:
+1. Install [jq](https://stedolan.github.io/jq/), e.g. `brew install jq`
+2. Add the `-s` flag to the `curl` commands below
+3. Pipe the output of each `curl` command to `jq .`
 
 ### Obtain a JSON Web Token (JWT)
 
 `curl -XPOST -H "Content-type: application/json" -d '{"auth": {"email": "admin@example.com", "password": "password"}}' 'http://localhost:3000/user_token'`
 
-Remember to save the token you receive in your response for use below.
+Replace the string `YOUR_TOKEN_HERE` in the examples below with the
+token received from the response.
 
 ### Get a list of brands
 
